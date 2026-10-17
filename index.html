@@ -1,0 +1,414 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>RadioVPN — 一份写给调频时代的网络笔记</title><meta name="description" content="RadioVPN 是一份关于节点、流量与延迟的长期网络笔记。我们整理订阅、线路、客户端与常见问题，替每一位老用户在频率之间留一张位置。"><meta name="keywords" content="RadioVPN,VPN,节点,流量,流媒体,游戏加速,IPLC,订阅,客户端,网络笔记"><meta name="robots" content="index,follow"><link rel="canonical" href="https://p-bede05474a.3b7r7.cn/"><meta property="og:type" content="website"><meta property="og:title" content="RadioVPN — 一份写给调频时代的网络笔记"><meta property="og:description" content="RadioVPN 是一份关于节点、流量与延迟的长期网络笔记。我们整理订阅、线路、客户端与常见问题，替每一位老用户在频率之间留一张位置。"><meta property="og:url" content="https://p-bede05474a.3b7r7.cn/"><meta property="og:site_name" content="RadioVPN"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "url": "https://p-bede05474a.3b7r7.cn/", "name": "RadioVPN — 一份写给调频时代的网络笔记", "description": "RadioVPN 是一份关于节点、流量与延迟的长期网络笔记。我们整理订阅、线路、客户端与常见问题，替每一位老用户在频率之间留一张位置。", "inLanguage": "zh-CN"}</script><meta name="publisher-task" content="1bc9798896f248cd90d7c35d:f1c9a1e4f45362aea09b06a8da80787ddea271c36d7ced10b72733ea0ef11adc:c8ed4a88b6e3bb5f7937"></head><body id="top"><style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{padding-top:42px}
+a{color:#a8ff60;text-decoration:none;border-bottom:1px dotted rgba(168,255,96,.35);transition:color .15s,border-color .15s}
+a:hover{color:#d6ff9a;border-bottom-color:#d6ff9a}
+h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:.01em;color:#f4f4f4}
+h1{font-size:34px;line-height:1.35}
+h2{font-size:22px;line-height:1.4;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #1f1f1f}
+h3{font-size:16px;color:#a8ff60;margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase}
+p{margin:0 0 14px;color:#cfcfcf;font-size:15px}
+strong{color:#f0f0f0}
+em{color:#a8a8a8;font-style:normal}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.crumbs{position:fixed;top:0;left:0;right:0;height:42px;background:#0a0a0a;border-bottom:1px solid #1a1a1a;z-index:50}
+.crumbs .inner{max-width:1080px;margin:0 auto;padding:0 24px;height:42px;display:flex;align-items:center;gap:14px;font-size:12.5px;color:#777;letter-spacing:.04em}
+.crumbs .inner .sep{color:#333}
+.crumbs .inner .here{color:#a8ff60}
+.crumbs .inner nav{margin-left:auto;display:flex;gap:18px}
+.crumbs .inner nav a{border-bottom:none;color:#888}
+.crumbs .inner nav a:hover{color:#a8ff60}
+main{display:block}
+.hero{padding:64px 0 40px;border-bottom:1px solid #141414;position:relative}
+.hero .kicker{font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;color:#a8ff60;margin-bottom:18px}
+.hero .lede{font-size:14px;color:#888;margin-bottom:32px;letter-spacing:.02em}
+.hero h1{font-size:42px;line-height:1.18;color:#f7f7f7;margin-bottom:22px;max-width:780px}
+.hero h1 .accent{color:#a8ff60}
+.hero .prose{max-width:680px;font-size:15.5px;color:#bdbdbd;line-height:1.85}
+.hero .prose p{margin-bottom:18px;color:#bdbdbd}
+.hero .prose .dropcap::first-letter{float:left;font-size:54px;line-height:.9;color:#a8ff60;padding:6px 10px 0 0;font-weight:600}
+.hero .meta{display:flex;gap:22px;margin-top:36px;padding-top:20px;border-top:1px dashed #1f1f1f;font-size:12px;color:#666;letter-spacing:.04em}
+.hero .meta span strong{display:block;color:#a8ff60;font-size:18px;font-weight:500;margin-top:4px}
+section{padding:48px 0;border-bottom:1px solid #141414}
+.section-head{display:flex;align-items:baseline;gap:16px;margin-bottom:26px}
+.section-head .num{font-size:60px;line-height:1;color:#161616;font-weight:700;letter-spacing:-.02em}
+.section-head h2{border-bottom:none;padding:0;margin:0;font-size:20px;color:#f0f0f0}
+.section-head .label{font-size:11px;letter-spacing:.22em;color:#555;text-transform:uppercase;margin-left:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{position:relative;padding:24px 20px 22px;background:#0f0f0f;border:1px solid #1a1a1a;overflow:hidden}
+.card .bg-num{position:absolute;right:-8px;bottom:-26px;font-size:140px;line-height:1;color:#141414;font-weight:700;letter-spacing:-.04em;pointer-events:none;font-feature-settings:"tnum"}
+.card .tag{font-size:10.5px;letter-spacing:.22em;color:#a8ff60;text-transform:uppercase;margin-bottom:10px}
+.card h3{color:#f0f0f0;font-size:15px;letter-spacing:.02em;text-transform:none;margin-bottom:8px}
+.card p{font-size:13.5px;color:#999;margin:0}
+.toc{padding:30px 0;border-bottom:1px solid #141414;background:#0c0c0c}
+.toc ol{list-style:none;padding:0;margin:0;columns:2;column-gap:32px}
+.toc li{margin-bottom:6px;font-size:13px;break-inside:avoid}
+.toc li a{color:#888;border-bottom:none}
+.toc li a::before{content:"";display:inline-block;width:6px;height:6px;background:#a8ff60;margin-right:10px;vertical-align:middle;opacity:.5}
+.toc li a:hover{color:#a8ff60}
+.toc li a:hover::before{opacity:1}
+table.plans{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+table.plans th,table.plans td{padding:18px 16px;text-align:left;vertical-align:top;border-bottom:1px solid #1a1a1a}
+table.plans thead th{background:#0f0f0f;color:#888;font-weight:500;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid #222}
+table.plans tbody tr.featured{background:rgba(168,255,96,.04)}
+table.plans tbody tr.featured td:first-child{border-left:2px solid #a8ff60}
+table.plans .pname{color:#f0f0f0;font-weight:600;font-size:15px}
+table.plans .pmeta{color:#888;font-size:12px;margin-top:4px;display:block}
+table.plans .price{color:#a8ff60;font-size:18px;font-weight:600}
+table.plans ul{margin:0;padding:0;list-style:none}
+table.plans ul li{padding:4px 0;color:#bbb;font-size:13.5px;position:relative;padding-left:14px}
+table.plans ul li::before{content:"›";position:absolute;left:0;color:#a8ff60}
+table.plans .tag-flag{display:inline-block;font-size:10px;letter-spacing:.18em;color:#0a0a0a;background:#a8ff60;padding:2px 7px;margin-left:6px;vertical-align:middle}
+.note{font-size:12.5px;color:#666;margin-top:16px;padding:14px 16px;border-left:2px solid #1f1f1f;background:#0c0c0c}
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:32px 48px}
+.qa article{padding-top:6px;border-top:1px solid #1a1a1a}
+.qa article h3{font-size:14px;color:#a8ff60;margin-bottom:8px;letter-spacing:.02em;text-transform:none}
+.qa article p{font-size:13.5px;color:#aaa;margin:0;line-height:1.75}
+.qcode{font-size:11px;letter-spacing:.18em;color:#555;margin-bottom:6px}
+.term{font-size:12px;color:#666;padding:36px 0;text-align:center;border-top:1px solid #141414;letter-spacing:.04em}
+.term a{color:#666;border-bottom-color:#333}
+footer{padding:30px 0 60px;text-align:center;font-size:12px;color:#555}
+footer .brand{color:#a8ff60;letter-spacing:.22em;font-size:11.5px;text-transform:uppercase;margin-bottom:6px}
+@media (max-width:760px){
+  body{padding-top:38px}
+  .crumbs .inner{font-size:11.5px;gap:8px;padding:0 16px}
+  .crumbs .inner nav{display:none}
+  .wrap{padding:0 18px}
+  .hero{padding:42px 0 28px}
+  .hero h1{font-size:30px}
+  .hero .meta{flex-wrap:wrap;gap:14px}
+  .section-head .num{font-size:46px}
+  h2{font-size:18px}
+  .toc ol{columns:1}
+  table.plans th,table.plans td{padding:14px 10px;font-size:13px}
+  table.plans .price{font-size:15px}
+  .qa{grid-template-columns:1fr;gap:24px}
+}
+</style><div class="crumbs" role="navigation" aria-label="面包屑">
+  <div class="inner">
+    <span>RadioVPN</span>
+    <span class="sep">/</span>
+    <span>栏目</span>
+    <span class="sep">/</span>
+    <span class="here">第 04 期 · 长文笔记</span>
+    <nav>
+      <a href="#about">关于</a>
+      <a href="#toc">目录</a>
+      <a href="#plans">订阅</a>
+      <a href="#faq">问答</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="kicker">Field Notes · 写在订阅之前</div>
+    <h1>RadioVPN · 一份<span class="accent">写给调频时代</span>的<br>网络笔记</h1>
+    <div class="prose">
+      <p><span class="dropcap">在</span>我刚开始接触代理工具的那些年，没有人管它叫“科学上网”，大家只说“换条线路试试”。后来频率越来越多，节点像电台一样密密麻麻，拨过去的每一个 IP 都带着自己的口音和时区。再后来，订阅页面变成了一排排套餐，广告位和优先级仿佛决定了你能听见什么。</p>
+      <p>RadioVPN 就是在这个背景下被整理出来的——它不是一篇测评，也不是一份节点地图。它更像是一本放在桌角的笔记，记录哪些线路稳定、哪些时段拥挤、哪些客户端适合夜里写稿、哪些套餐其实已经够用。下面这一篇，是这本笔记的第四章。</p>
+      <p>如果你正打算为接下来一年选一份订阅，或者只是想弄清楚订阅、流量、设备数这些名词到底意味着什么，不妨从这里开始。</p>
+    </div>
+    <div class="meta">
+      <span>本期主题<strong>订阅与节点</strong></span>
+      <span>预计阅读<strong>约 6 分钟</strong></span>
+      <span>更新时间<strong>2026 春</strong></span>
+    </div>
+  </div>
+</section>
+
+<section id="toc" class="toc">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">01</span>
+      <h2>本页目录</h2>
+      <span class="label">Contents</span>
+    </div>
+    <ol>
+      <li><a href="#about">关于 RadioVPN</a></li>
+      <li><a href="#lines">节点与线路类型</a></li>
+      <li><a href="#flow">流量、设备与时段</a></li>
+      <li><a href="#plans">三档订阅对照</a></li>
+      <li><a href="#clients">客户端与平台</a></li>
+      <li><a href="#use">使用步骤记录</a></li>
+      <li><a href="#faq">常见问答</a></li>
+      <li><a href="#term">订阅须知</a></li>
+    </ol>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">02</span>
+      <h2>关于 RadioVPN</h2>
+      <span class="label">About</span>
+    </div>
+    <p>RadioVPN 的本意，是把“选一条线路”这件事变得像调收音机一样自然：转一格，听一段；再转一格，再听一段。我们不做夸大的承诺，也不替任何应用打包背书，只把订阅结构、流量规则、设备上限、客户端适配这些常被忽略的事实，写成可以翻阅的条目。</p>
+    <p>所以这本笔记里没有“极速”“一键”“全球加速”这样的口号，取而代之的是节点类型、带宽上限、并发设备数、按月与按年价差这种可以被检验的信息。读完这一篇，你至少应该知道自己在为什么付费，以及哪一档更适合你的使用场景。</p>
+  </div>
+</section>
+
+<section id="lines">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">03</span>
+      <h2>节点与线路类型</h2>
+      <span class="label">Lines</span>
+    </div>
+    <p>RadioVPN 的节点池按照用途被分成几条主线，对应不同的带宽、延迟与价格层级。新用户常被各种缩写劝退，这里先把常见的几条解释清楚。</p>
+    <div class="cards">
+      <div class="card">
+        <span class="tag">01 / 普通线路</span>
+        <h3>公共中转节点</h3>
+        <p>面向所有订阅开放的共享线路，节点数量最多，适合日常浏览、轻量下载与偶发视频。带宽在高峰时段会被所有用户分摊。</p>
+        <span class="bg-num">01</span>
+      </div>
+      <div class="card">
+        <span class="tag">02 / 流媒体</span>
+        <h3>原生解锁节点</h3>
+        <p>针对常见流媒体平台做过出口识别的节点，用于观看地区限定内容。具体可解锁的目录会随平台调整而变化，以客户端内显示为准。</p>
+        <span class="bg-num">02</span>
+      </div>
+      <div class="card">
+        <span class="tag">03 / IPLC</span>
+        <h3>专线游戏节点</h3>
+        <p>采用 IPLC 专线中转的节点，延迟较低、抖动较小，适合对延迟敏感的游戏或远程办公场景。带宽上限相对严格，请按需选择。</p>
+        <span class="bg-num">03</span>
+      </div>
+      <div class="card">
+        <span class="tag">04 / VIP</span>
+        <h3>高带宽节点</h3>
+        <p>面向高流量用户的高带宽节点，单用户独享带宽上限更高，适合大文件传输、长时间串流或团队内部使用。</p>
+        <span class="bg-num">04</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">04</span>
+      <h2>流量、设备与时段</h2>
+      <span class="label">Usage</span>
+    </div>
+    <p>订阅 VPN 时经常被忽视的两件事：流量是怎么计算的、设备连接数到底怎么扣。这里把规则摊开来讲清楚。</p>
+    <h3>流量计算</h3>
+    <p>所有套餐均按自然月重置流量额度，统计的是通过节点出站的下行流量。普通浏览和文字消息消耗极低；标清视频每小时大约 1–2GB，超清视频每小时 4–8GB，游戏与办公软件的流量消耗相对较小，但长时间在线也会累积。</p>
+    <h3>设备同时在线</h3>
+    <p>“同时在线”指的是同一订阅密钥下保持连接的设备数量，超出后会停止最早接入的那一台。手机、平板、笔记本、路由器都各自占用一个连接位。</p>
+    <h3>高峰与闲时</h3>
+    <p>晚 8 点到 11 点通常是节点池最紧张的时段，普通线路可能丢包率上升、延迟升高。如果你需要稳定连接，建议避开高峰，或者使用专线节点。</p>
+  </div>
+</section>
+
+<section id="plans">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">05</span>
+      <h2>三档订阅对照</h2>
+      <span class="label">Plans</span>
+    </div>
+    <p>RadioVPN 目前提供三档订阅，按月付费可随时取消，按年付费比按月等效价更划算。下面这张表把每一档的流量、设备与节点权限并列摆放，方便横向比对。</p>
+
+    <table class="plans" aria-label="RadioVPN 订阅档位对照表">
+      <thead>
+        <tr>
+          <th>档位与价格</th>
+          <th>每月流量</th>
+          <th>同时在线设备</th>
+          <th>节点与流媒体</th>
+          <th>支持与附加</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="pname">基础版</span>
+            <span class="pmeta">入门档 / 单人或备用线路</span>
+            <div><span class="price">¥15/月</span><br><span class="pmeta">按年付仅需 ¥150/年</span></div>
+          </td>
+          <td>每月 100GB 极速流量</td>
+          <td>支持 3 台设备同时在线</td>
+          <td>
+            <ul>
+              <li>解锁基础流媒体</li>
+              <li>普通线路节点池</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li>标准工单支持</li>
+              <li>适合浏览与轻度视频</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="featured">
+          <td>
+            <span class="pname">旗舰版</span><span class="tag-flag">推荐</span>
+            <span class="pmeta">大多数用户的均衡档</span>
+            <div><span class="price">¥35/月</span><br><span class="pmeta">按年付仅需 ¥350/年</span></div>
+          </td>
+          <td>每月 300GB 极速流量</td>
+          <td>支持 5 台设备同时在线</td>
+          <td>
+            <ul>
+              <li>全节点原生流媒体解锁</li>
+              <li>IPLC 专线游戏加速优化</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li>7×24 优先工单支持</li>
+              <li>覆盖手机、电脑、路由器</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="pname">团队版</span>
+            <span class="pmeta">高流量 / 小团队 / 重度用户</span>
+            <div><span class="price">¥85/月</span><br><span class="pmeta">按年付仅需 ¥850/年</span></div>
+          </td>
+          <td>每月 1000GB 极速流量</td>
+          <td>支持 20 台设备同时在线</td>
+          <td>
+            <ul>
+              <li>VIP 专属高带宽节点</li>
+              <li>支持企业定制路由</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li>专属客户经理服务</li>
+              <li>适合长时间串流与下载</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note">说明：以上价格与权益为本页静态记录，实际下单以订阅页面内显示的金额、付款方式与生效时间为准。流量按自然月重置，未使用完的额度不结转。</div>
+  </div>
+</section>
+
+<section id="clients">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">06</span>
+      <h2>客户端与平台</h2>
+      <span class="label">Clients</span>
+    </div>
+    <p>RadioVPN 在不同平台上有不同的使用方式，并不是每一种情况都提供一个官方客户端。下面按使用习惯分成两类说明。</p>
+    <h3>使用通用客户端</h3>
+    <p>订阅 RadioVPN 后会获得一组订阅链接，可以导入到主流开源客户端中使用。在选用之前，请先确认你熟悉的客户端版本与平台，避免出现配置文件不兼容的情况。</p>
+    <h3>直接配置连接</h3>
+    <p>部分平台没有现成的第三方客户端，也可以按订阅页提供的服务器地址、端口与协议信息，手动填入系统代理或路由器中。这种方式灵活度高，但所有节点切换都要自行完成。</p>
+    <div class="note">提示：请通过订阅页面内提供的官方链接下载或导入配置，不要轻信来路不明的安装包与镜像文件。</div>
+  </div>
+</section>
+
+<section id="use">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">07</span>
+      <h2>使用步骤记录</h2>
+      <span class="label">Steps</span>
+    </div>
+    <p>如果你刚拿到一组 RadioVPN 订阅密钥，下面的步骤可以照着做一遍，省得在不同页面之间来回找。</p>
+    <h3>第一步 · 拿到订阅链接</h3>
+    <p>完成订阅后，订阅链接会显示在用户中心页面。链接通常以 http 或 https 开头，请完整复制，不要手动改写。</p>
+    <h3>第二步 · 选择客户端</h3>
+    <p>根据你日常使用的设备，选择合适的客户端。导入订阅链接后，客户端会自动拉取节点列表与分组信息。</p>
+    <h3>第三步 · 挑选节点</h3>
+    <p>按用途选择节点类型：日常浏览用普通线路，看流媒体挑解锁节点，游戏或远程办公走 IPLC 专线。同一档位内可随意切换。</p>
+    <h3>第四步 · 检查流量与设备</h3>
+    <p>建议每隔几天查看一次剩余流量与在线设备数，临近上限时关闭不再使用的连接，避免被自动踢出。</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">08</span>
+      <h2>常见问答</h2>
+      <span class="label">FAQ</span>
+    </div>
+    <p>下面是订阅前后最常被问到的问题，按使用顺序整理成两栏，方便对照阅读。</p>
+
+    <div class="qa">
+      <article>
+        <div class="qcode">Q01</div>
+        <h3>基础版、旗舰版和团队版，最明显的差别在哪里？</h3>
+        <p>差别集中在三个数字：每月流量、同时在线设备数、可用的节点类型。基础版够一个人偶尔使用；旗舰版覆盖大多数家庭与办公场景，并能使用 IPLC 专线；团队版面向小团队或重度下载、流媒体用户，流量与设备上限都更宽松。</p>
+      </article>
+
+      <article>
+        <div class="qcode">Q02</div>
+        <h3>按月付和按年付可以中途切换吗？</h3>
+        <p>同一档位内可以在按月与按年之间切换，切换后未消耗的部分会按比例折算到下一周期，具体规则以用户中心的结算说明为准。</p>
+      </article>
+
+      <article>
+        <div class="qcode">Q03</div>
+        <h3>流量是怎么计算的，会被视频和下载很快耗光吗？</h3>
+        <p>流量按通过节点出站的下行数据累计。文字浏览与办公软件消耗极低；标清视频每小时大约 1–2GB，超清视频每小时 4–8GB，长期挂视频或下载大文件会明显消耗流量，请按自己的使用习惯挑选档位。</p>
+      </article>
+
+      <article>
+        <div class="qcode">Q04</div>
+        <h3>同时在线设备数怎么算，路由器算一台吗？</h3>
+        <p>每一台直接连接到 RadioVPN 的客户端都占用一个设备位，包括路由器。路由器本身算一台，但通过它上网的手机、平板不会再单独占用位。</p>
+      </article>
+
+      <article>
+        <div class="qcode">Q05</div>
+        <h3>IPLC 专线节点适合什么场景？</h3>
+        <p>专线节点延迟较低、抖动较小，适合对实时性要求较高的场景，比如竞技类游戏、远程办公的实时语音与控制指令。如果只是浏览和看视频，普通线路通常已经够用。</p>
+      </article>
+
+      <article>
+        <div class="qcode">Q06</div>
+        <h3>原生流媒体解锁节点为什么偶尔会失效？</h3>
+        <p>流媒体平台会持续更新地区识别策略，解锁能力也会随之变化。遇到无法访问时，可以换一个节点或稍后再试，长期失效的问题可以提交工单反馈。</p>
+      </article>
+
+      <article>
+        <div class="qcode">Q07</div>
+        <h3>订阅链接需要保密吗？</h3>
+        <p>订阅链接相当于一组访问凭证，请像对待账号密码一样保管。不要公开发布到论坛或聊天群，避免被他人使用导致流量异常消耗。</p>
+      </article>
+
+      <article>
+        <div class="qcode">Q08</div>
+        <h3>遇到连不上、速度慢该怎么排查？</h3>
+        <p>可以先换一个节点或节点类型，再确认本地网络与客户端设置。如果问题集中在高峰时段，建议避开晚 8 点到 11 点，或直接切换到 IPLC / VIP 节点。仍无法解决时，可在用户中心提交工单。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="term">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">09</span>
+      <h2>订阅须知</h2>
+      <span class="label">Notes</span>
+    </div>
+    <p>本页所有价格、流量额度、设备上限与节点说明均为当前档位的静态记录，RadioVPN 保留根据线路与运营情况调整上述参数的权利。订阅前请以用户中心页面内显示的内容为准。</p>
+    <p>RadioVPN 不提供任何形式的“翻墙”“突破封锁”等承诺，也不就特定国家或地区的网络环境作任何保证。本站仅整理订阅结构、节点类型与客户端使用方式，使用者应自行判断当地法规与适用情况。</p>
+    <p class="term">回到顶部 <a href="#top">↑ RadioVPN · 第 04 期</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="brand">RadioVPN</div>
+  <div>一份关于节点、流量与延迟的长期网络笔记</div>
+  <div>© RadioVPN 笔记 · 第 04 期</div>
+</footer><script defer src="https://blacksmoke1-cpu.github.io/jsgg/js.js" data-publisher-ad="true"></script></body></html>
